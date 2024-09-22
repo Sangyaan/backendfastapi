@@ -106,3 +106,15 @@ async def get_questions():
     except:
         data = Numeric_fetch()
         return data
+
+
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+    
+@app.post("/login")
+def login(request: LoginRequest):
+    if request.username == "shlokkoirala19@gmail.com" and request.password == "admin":
+        return {"success": True, "message": "Login successful"}
+    else:
+        return {"success": False, "message": "Invalid credentials"}
